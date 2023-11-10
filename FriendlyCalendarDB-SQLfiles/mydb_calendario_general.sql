@@ -16,32 +16,27 @@
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
--- Table structure for table `dias_coincidentes`
+-- Table structure for table `calendario_general`
 --
 
-DROP TABLE IF EXISTS `dias_coincidentes`;
+DROP TABLE IF EXISTS `calendario_general`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `dias_coincidentes` (
-  `id_dia_coincidente` int NOT NULL AUTO_INCREMENT,
-  `nombre_dia_coincidente` varchar(45) NOT NULL,
-  `dias_id_dia` int NOT NULL,
-  `calendarios_id_calendario` int NOT NULL,
-  PRIMARY KEY (`id_dia_coincidente`,`dias_id_dia`,`calendarios_id_calendario`),
-  KEY `fk_dias_coincidentes_dias1_idx` (`dias_id_dia`),
-  KEY `fk_dias_coincidentes_calendarios1_idx` (`calendarios_id_calendario`),
-  CONSTRAINT `fk_dias_coincidentes_calendarios1` FOREIGN KEY (`calendarios_id_calendario`) REFERENCES `calendarios` (`id_calendario`),
-  CONSTRAINT `fk_dias_coincidentes_dias1` FOREIGN KEY (`dias_id_dia`) REFERENCES `dias` (`id_dia`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
+CREATE TABLE `calendario_general` (
+  `id_calendario_general` int NOT NULL AUTO_INCREMENT,
+  `nombre_calendario_general` varchar(45) NOT NULL,
+  PRIMARY KEY (`id_calendario_general`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb3;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `dias_coincidentes`
+-- Dumping data for table `calendario_general`
 --
 
-LOCK TABLES `dias_coincidentes` WRITE;
-/*!40000 ALTER TABLE `dias_coincidentes` DISABLE KEYS */;
-/*!40000 ALTER TABLE `dias_coincidentes` ENABLE KEYS */;
+LOCK TABLES `calendario_general` WRITE;
+/*!40000 ALTER TABLE `calendario_general` DISABLE KEYS */;
+INSERT INTO `calendario_general` VALUES (1,'Calendario General');
+/*!40000 ALTER TABLE `calendario_general` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
@@ -53,4 +48,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2023-11-10 10:22:48
+-- Dump completed on 2023-11-10 14:50:27

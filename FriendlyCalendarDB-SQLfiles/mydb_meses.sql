@@ -16,31 +16,27 @@
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
--- Table structure for table `link_dias_horarios`
+-- Table structure for table `meses`
 --
 
-DROP TABLE IF EXISTS `link_dias_horarios`;
+DROP TABLE IF EXISTS `meses`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `link_dias_horarios` (
-  `id_link_dia_horario` int NOT NULL AUTO_INCREMENT,
-  `horarios_id_horario` int NOT NULL,
-  `dias_id_dia` int NOT NULL,
-  PRIMARY KEY (`id_link_dia_horario`,`horarios_id_horario`,`dias_id_dia`),
-  KEY `fk_link_dias_horarios_horarios1_idx` (`horarios_id_horario`),
-  KEY `fk_link_dias_horarios_dias1_idx` (`dias_id_dia`),
-  CONSTRAINT `fk_link_dias_horarios_dias1` FOREIGN KEY (`dias_id_dia`) REFERENCES `dias` (`id_dia`),
-  CONSTRAINT `fk_link_dias_horarios_horarios1` FOREIGN KEY (`horarios_id_horario`) REFERENCES `horarios` (`id_horario`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
+CREATE TABLE `meses` (
+  `id_mes` int NOT NULL AUTO_INCREMENT,
+  `nombre_mes` varchar(45) DEFAULT NULL,
+  PRIMARY KEY (`id_mes`)
+) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8mb3;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `link_dias_horarios`
+-- Dumping data for table `meses`
 --
 
-LOCK TABLES `link_dias_horarios` WRITE;
-/*!40000 ALTER TABLE `link_dias_horarios` DISABLE KEYS */;
-/*!40000 ALTER TABLE `link_dias_horarios` ENABLE KEYS */;
+LOCK TABLES `meses` WRITE;
+/*!40000 ALTER TABLE `meses` DISABLE KEYS */;
+INSERT INTO `meses` VALUES (1,'Enero'),(2,'Febrero'),(3,'Marzo'),(4,'Abril'),(5,'Mayo'),(6,'Junio'),(7,'Julio'),(8,'Agosto'),(9,'Septiembre'),(10,'Octubre'),(11,'Noviembre'),(12,'Diciembre');
+/*!40000 ALTER TABLE `meses` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
@@ -52,4 +48,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2023-11-10 10:22:48
+-- Dump completed on 2023-11-10 14:50:28

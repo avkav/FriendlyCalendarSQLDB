@@ -16,33 +16,26 @@
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
--- Table structure for table `eventos`
+-- Table structure for table `link_eventos_calendarios`
 --
 
-DROP TABLE IF EXISTS `eventos`;
+DROP TABLE IF EXISTS `link_eventos_calendarios`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `eventos` (
-  `id_evento` int NOT NULL,
-  `horario_inicio` varchar(45) NOT NULL,
-  `horario_fin` varchar(45) NOT NULL,
-  `nombre_evento` varchar(45) NOT NULL,
-  `descripcion_evento` varchar(45) NOT NULL,
-  `lugar_evento` varchar(45) NOT NULL,
-  `link_usuarios_eventos_id_link_usuario_evento` int NOT NULL,
-  PRIMARY KEY (`id_evento`,`link_usuarios_eventos_id_link_usuario_evento`),
-  KEY `fk_eventos_link_usuarios_eventos1_idx` (`link_usuarios_eventos_id_link_usuario_evento`),
-  CONSTRAINT `fk_eventos_link_usuarios_eventos1` FOREIGN KEY (`link_usuarios_eventos_id_link_usuario_evento`) REFERENCES `link_usuarios_eventos` (`id_link_usuario_evento`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
+CREATE TABLE `link_eventos_calendarios` (
+  `id_link_evento_calendario` int NOT NULL AUTO_INCREMENT,
+  PRIMARY KEY (`id_link_evento_calendario`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb3;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `eventos`
+-- Dumping data for table `link_eventos_calendarios`
 --
 
-LOCK TABLES `eventos` WRITE;
-/*!40000 ALTER TABLE `eventos` DISABLE KEYS */;
-/*!40000 ALTER TABLE `eventos` ENABLE KEYS */;
+LOCK TABLES `link_eventos_calendarios` WRITE;
+/*!40000 ALTER TABLE `link_eventos_calendarios` DISABLE KEYS */;
+INSERT INTO `link_eventos_calendarios` VALUES (1);
+/*!40000 ALTER TABLE `link_eventos_calendarios` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
@@ -54,4 +47,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2023-11-10 10:22:47
+-- Dump completed on 2023-11-10 14:50:27

@@ -16,31 +16,27 @@
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
--- Table structure for table `link_horarios_usuarios`
+-- Table structure for table `dias`
 --
 
-DROP TABLE IF EXISTS `link_horarios_usuarios`;
+DROP TABLE IF EXISTS `dias`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `link_horarios_usuarios` (
-  `id_link_horario_usuario` int NOT NULL AUTO_INCREMENT,
-  `horarios_id_horario` int NOT NULL,
-  `usuarios_id_usuario` int NOT NULL,
-  PRIMARY KEY (`id_link_horario_usuario`,`horarios_id_horario`,`usuarios_id_usuario`),
-  KEY `fk_horarios_usuarios_horarios_idx` (`horarios_id_horario`),
-  KEY `fk_horarios_usuarios_usuarios1_idx` (`usuarios_id_usuario`),
-  CONSTRAINT `fk_horarios_usuarios_horarios` FOREIGN KEY (`horarios_id_horario`) REFERENCES `horarios` (`id_horario`),
-  CONSTRAINT `fk_horarios_usuarios_usuarios1` FOREIGN KEY (`usuarios_id_usuario`) REFERENCES `usuarios` (`id_usuario`)
+CREATE TABLE `dias` (
+  `id_dia` int NOT NULL,
+  `nombre_dia` varchar(45) NOT NULL,
+  PRIMARY KEY (`id_dia`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `link_horarios_usuarios`
+-- Dumping data for table `dias`
 --
 
-LOCK TABLES `link_horarios_usuarios` WRITE;
-/*!40000 ALTER TABLE `link_horarios_usuarios` DISABLE KEYS */;
-/*!40000 ALTER TABLE `link_horarios_usuarios` ENABLE KEYS */;
+LOCK TABLES `dias` WRITE;
+/*!40000 ALTER TABLE `dias` DISABLE KEYS */;
+INSERT INTO `dias` VALUES (1,'Lunes'),(2,'Martes'),(3,'Miercoles'),(4,'Jueves'),(5,'Viernes'),(6,'Sabado'),(7,'Domingo');
+/*!40000 ALTER TABLE `dias` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
@@ -52,4 +48,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2023-11-10 10:22:48
+-- Dump completed on 2023-11-10 14:50:28

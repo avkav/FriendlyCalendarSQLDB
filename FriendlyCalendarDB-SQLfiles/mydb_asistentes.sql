@@ -16,27 +16,31 @@
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
--- Table structure for table `horarios`
+-- Table structure for table `asistentes`
 --
 
-DROP TABLE IF EXISTS `horarios`;
+DROP TABLE IF EXISTS `asistentes`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `horarios` (
-  `id_horario` int NOT NULL,
-  `horario_inicio` varchar(45) NOT NULL,
-  `horario_fin` varchar(45) NOT NULL,
-  PRIMARY KEY (`id_horario`)
+CREATE TABLE `asistentes` (
+  `id_asistente` int NOT NULL AUTO_INCREMENT,
+  `eventos_id_evento` int NOT NULL,
+  `usuarios_id_usuario` int NOT NULL,
+  PRIMARY KEY (`id_asistente`,`eventos_id_evento`,`usuarios_id_usuario`),
+  KEY `fk_asistentes_eventos1_idx` (`eventos_id_evento`),
+  KEY `fk_asistentes_usuarios1_idx` (`usuarios_id_usuario`),
+  CONSTRAINT `fk_asistentes_eventos1` FOREIGN KEY (`eventos_id_evento`) REFERENCES `eventos` (`id_evento`),
+  CONSTRAINT `fk_asistentes_usuarios1` FOREIGN KEY (`usuarios_id_usuario`) REFERENCES `usuarios` (`id_usuario`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `horarios`
+-- Dumping data for table `asistentes`
 --
 
-LOCK TABLES `horarios` WRITE;
-/*!40000 ALTER TABLE `horarios` DISABLE KEYS */;
-/*!40000 ALTER TABLE `horarios` ENABLE KEYS */;
+LOCK TABLES `asistentes` WRITE;
+/*!40000 ALTER TABLE `asistentes` DISABLE KEYS */;
+/*!40000 ALTER TABLE `asistentes` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
@@ -48,4 +52,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2023-11-10 10:22:48
+-- Dump completed on 2023-11-10 14:50:27

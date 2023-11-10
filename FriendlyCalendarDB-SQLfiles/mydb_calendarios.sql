@@ -16,25 +16,33 @@
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
--- Table structure for table `link_usuarios_eventos`
+-- Table structure for table `calendarios`
 --
 
-DROP TABLE IF EXISTS `link_usuarios_eventos`;
+DROP TABLE IF EXISTS `calendarios`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `link_usuarios_eventos` (
-  `id_link_usuario_evento` int NOT NULL AUTO_INCREMENT,
-  PRIMARY KEY (`id_link_usuario_evento`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
+CREATE TABLE `calendarios` (
+  `id_calendario` int NOT NULL AUTO_INCREMENT,
+  `nombre_calendario` varchar(45) NOT NULL,
+  `usuarios_id_usuario` int NOT NULL,
+  `link_eventos_calendarios_id_link_evento_calendario` int NOT NULL,
+  PRIMARY KEY (`id_calendario`,`usuarios_id_usuario`,`link_eventos_calendarios_id_link_evento_calendario`),
+  KEY `fk_calendarios_usuarios1_idx` (`usuarios_id_usuario`),
+  KEY `fk_calendarios_link_eventos_calendarios1_idx` (`link_eventos_calendarios_id_link_evento_calendario`),
+  CONSTRAINT `fk_calendarios_link_eventos_calendarios1` FOREIGN KEY (`link_eventos_calendarios_id_link_evento_calendario`) REFERENCES `link_eventos_calendarios` (`id_link_evento_calendario`),
+  CONSTRAINT `fk_calendarios_usuarios1` FOREIGN KEY (`usuarios_id_usuario`) REFERENCES `usuarios` (`id_usuario`)
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb3;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `link_usuarios_eventos`
+-- Dumping data for table `calendarios`
 --
 
-LOCK TABLES `link_usuarios_eventos` WRITE;
-/*!40000 ALTER TABLE `link_usuarios_eventos` DISABLE KEYS */;
-/*!40000 ALTER TABLE `link_usuarios_eventos` ENABLE KEYS */;
+LOCK TABLES `calendarios` WRITE;
+/*!40000 ALTER TABLE `calendarios` DISABLE KEYS */;
+INSERT INTO `calendarios` VALUES (1,'Calendario de Angie',1,1),(2,'Calendario de Isa',2,1);
+/*!40000 ALTER TABLE `calendarios` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
@@ -46,4 +54,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2023-11-10 10:22:47
+-- Dump completed on 2023-11-10 14:50:28
